@@ -1,0 +1,43 @@
+===========================================
+COMANDOS PARA SUBIR NO GITHUB
+===========================================
+
+PASSO 1: Criar repositório no GitHub
+--------------------------------------
+1. Acesse: https://github.com/new
+2. Nome: museu-site (ou outro)
+3. NÃO marque nenhuma opção
+4. Clique em "Create repository"
+
+PASSO 2: Executar no terminal (PowerShell)
+------------------------------------------
+# Adicionar todos os arquivos
+git add .
+
+# Fazer commit
+git commit -m "Initial commit - Site do Museu"
+
+# Conectar ao repositório (SUBSTITUA pelos seus dados)
+git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+
+# Renomear branch
+git branch -M main
+
+# Fazer push
+git push -u origin main
+
+PASSO 3: Configurar GitHub Pages
+----------------------------------
+1. No repositório: Settings > Pages
+2. Source: GitHub Actions
+3. Salvar
+
+PASSO 4: Aguardar deploy
+------------------------
+- Vá em Actions para ver o progresso
+- Site estará em: https://SEU_USUARIO.github.io/SEU_REPOSITORIO/
+
+===========================================
+OU EXECUTE O SCRIPT: subir-github.ps1
+===========================================
+

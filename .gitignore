@@ -1,0 +1,12 @@
+node_modules/
+dist/
+data/
+.DS_Store
+*.log
+.env
+.vscode/
+.idea/
+
+# Manter pasta dist para GitHub Pages (comentar se necessário)
+# dist/
+

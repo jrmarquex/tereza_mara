@@ -1,0 +1,53 @@
+===========================================
+COMANDOS PARA SUBIR NO GITHUB
+Repositório: https://github.com/jrmarquex/tereza_mara.git
+===========================================
+
+Execute estes comandos no PowerShell (um por vez):
+
+1. Verificar se está tudo commitado:
+   git status
+
+2. Conectar ao repositório:
+   git remote remove origin
+   git remote add origin https://github.com/jrmarquex/tereza_mara.git
+   git remote -v
+
+3. Garantir que está na branch main:
+   git branch -M main
+
+4. Fazer push:
+   git push -u origin main
+
+===========================================
+SE DER ERRO DE AUTENTICAÇÃO:
+===========================================
+
+Opção 1 - GitHub CLI (recomendado):
+   gh auth login
+   (Siga as instruções na tela)
+
+Opção 2 - Personal Access Token:
+   1. Acesse: https://github.com/settings/tokens
+   2. Generate new token (classic)
+   3. Marque: repo (todas as permissões)
+   4. Copie o token
+   5. Use no lugar da senha quando pedir
+
+Opção 3 - Configurar credenciais:
+   git config --global user.name "Seu Nome"
+   git config --global user.email "seu@email.com"
+
+===========================================
+APÓS O PUSH:
+===========================================
+
+1. Acesse: https://github.com/jrmarquex/tereza_mara
+2. Vá em Settings > Pages
+3. Source: GitHub Actions
+4. Salvar
+5. Aguarde alguns minutos
+6. Site estará em: https://jrmarquex.github.io/tereza_mara/
+
+===========================================
+
