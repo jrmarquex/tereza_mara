@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eventos do Museu - Participe dos nossos eventos e atividades">
+    <title>Museu - Eventos</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-content">
+                    <button class="search-btn" aria-label="Buscar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="index.html">Início</a></li>
+                            <li><a href="sobre.html">Sobre</a></li>
+                            <li><a href="exposicoes.html">Exposições</a></li>
+                            <li><a href="colecoes.html">Coleções</a></li>
+                            <li><a href="eventos.html" class="active">Eventos</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                        <a href="#" aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.84 3.05 8.97 7.35 10.58-.1-.82-.19-2.07.04-2.96.18-.78 1.16-4.97 1.16-4.97s-.3-.6-.3-1.48c0-1.38.8-2.41 1.8-2.41.85 0 1.26.64 1.26 1.4 0 .85-.54 2.12-.82 3.3-.23.98.49 1.78 1.47 1.78 1.77 0 3.12-1.87 3.12-4.57 0-2.39-1.72-4.06-4.18-4.06-2.85 0-4.52 2.14-4.52 4.35 0 .85.33 1.76.74 2.26.08.1.09.19.07.29l-.28 1.13c-.04.17-.14.21-.33.13-1.24-.58-2.02-2.4-2.02-3.86 0-3.15 2.29-6.05 6.6-6.05 3.47 0 6.16 2.47 6.16 5.77 0 3.44-2.17 6.21-5.18 6.21-1.01 0-1.97-.53-2.3-1.24l-.63 2.4c-.23.89-.85 2.01-1.27 2.69z"></path></svg></a>
+                        <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                    </div>
+                    
+                    <button class="mobile-menu-toggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Eventos Page Content -->
+    <section class="events-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Eventos</h1>
+                <p>Participe dos nossos eventos, palestras, workshops e atividades culturais</p>
+            </div>
+
+            <!-- Próximos Eventos -->
+            <div class="events-list">
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">15</span>
+                        <span class="event-month">MAR</span>
+                    </div>
+                    <div class="event-content">
+                        <h2>Palestra: História da Arte Regional</h2>
+                        <p class="event-time">19:00 - 21:00</p>
+                        <p>Uma palestra especial com o renomado historiador Dr. João Silva sobre a evolução da arte em nossa região ao longo dos séculos.</p>
+                        <div class="event-details">
+                            <span class="event-location">📍 Auditório Principal</span>
+                            <span class="event-price">Gratuito</span>
+                        </div>
+                        <a href="#" class="btn-event">Inscrever-se</a>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">22</span>
+                        <span class="event-month">MAR</span>
+                    </div>
+                    <div class="event-content">
+                        <h2>Workshop de Conservação de Artefatos</h2>
+                        <p class="event-time">14:00 - 17:00</p>
+                        <p>Workshop prático sobre técnicas de conservação e preservação de artefatos históricos. Inclui demonstrações práticas.</p>
+                        <div class="event-details">
+                            <span class="event-location">📍 Laboratório de Conservação</span>
+                            <span class="event-price">R$ 50,00</span>
+                        </div>
+                        <a href="#" class="btn-event">Inscrever-se</a>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">05</span>
+                        <span class="event-month">ABR</span>
+                    </div>
+                    <div class="event-content">
+                        <h2>Visita Guiada Noturna</h2>
+                        <p class="event-time">20:00 - 22:00</p>
+                        <p>Uma experiência única de visita guiada ao museu durante a noite, com iluminação especial e histórias exclusivas.</p>
+                        <div class="event-details">
+                            <span class="event-location">📍 Todo o Museu</span>
+                            <span class="event-price">R$ 30,00</span>
+                        </div>
+                        <a href="#" class="btn-event">Inscrever-se</a>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">12</span>
+                        <span class="event-month">ABR</span>
+                    </div>
+                    <div class="event-content">
+                        <h2>Lançamento do Livro: "Patrimônio Cultural"</h2>
+                        <p class="event-time">18:00 - 20:00</p>
+                        <p>Lançamento do novo livro sobre patrimônio cultural com sessão de autógrafos e debate com os autores.</p>
+                        <div class="event-details">
+                            <span class="event-location">📍 Sala de Eventos</span>
+                            <span class="event-price">Gratuito</span>
+                        </div>
+                        <a href="#" class="btn-event">Inscrever-se</a>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">20</span>
+                        <span class="event-month">ABR</span>
+                    </div>
+                    <div class="event-content">
+                        <h2>Atividade para Crianças: Arqueologia para Pequenos</h2>
+                        <p class="event-time">10:00 - 12:00</p>
+                        <p>Atividade educativa e divertida para crianças de 6 a 12 anos, onde aprenderão sobre arqueologia de forma lúdica.</p>
+                        <div class="event-details">
+                            <span class="event-location">📍 Área Educativa</span>
+                            <span class="event-price">R$ 25,00</span>
+                        </div>
+                        <a href="#" class="btn-event">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="privacidade.html">Política de Privacidade</a>
+                    <a href="termos.html">Termos e Condições</a>
+                    <a href="cookies.html">Política de Cookies</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 por Museu [Nome]. Todos os direitos reservados.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="#" aria-label="Pinterest">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.84 3.05 8.97 7.35 10.58-.1-.82-.19-2.07.04-2.96.18-.78 1.16-4.97 1.16-4.97s-.3-.6-.3-1.48c0-1.38.8-2.41 1.8-2.41.85 0 1.26.64 1.26 1.4 0 .85-.54 2.12-.82 3.3-.23.98.49 1.78 1.47 1.78 1.77 0 3.12-1.87 3.12-4.57 0-2.39-1.72-4.06-4.18-4.06-2.85 0-4.52 2.14-4.52 4.35 0 .85.33 1.76.74 2.26.08.1.09.19.07.29l-.28 1.13c-.04.17-.14.21-.33.13-1.24-.58-2.02-2.4-2.02-3.86 0-3.15 2.29-6.05 6.6-6.05 3.47 0 6.16 2.47 6.16 5.77 0 3.44-2.17 6.21-5.18 6.21-1.01 0-1.97-.53-2.3-1.24l-.63 2.4c-.23.89-.85 2.01-1.27 2.69z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <button class="scroll-top" aria-label="Voltar ao topo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 15l-6-6-6 6"></path>
+                </svg>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <button class="chat-toggle" aria-label="Abrir chat">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>Museu [Nome]</h3>
+                <span class="chat-status">
+                    <span class="status-dot"></span>
+                    Responderemos assim que possível
+                </span>
+                <button class="chat-close" aria-label="Fechar chat">×</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Insira sua mensagem">
+                <button class="chat-send" aria-label="Enviar mensagem">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>
+

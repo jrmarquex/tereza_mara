@@ -13,7 +13,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        sobre: './sobre.html'
+        sobre: './sobre.html',
+        exposicoes: './exposicoes.html',
+        colecoes: './colecoes.html',
+        eventos: './eventos.html',
+        contato: './contato.html'
       }
     }
   },

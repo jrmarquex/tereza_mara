@@ -162,6 +162,54 @@ if (newsletterForm) {
     });
 }
 
+// Contact Form
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const subject = formData.get('subject');
+        const message = formData.get('message');
+        
+        // Reset message
+        formMessage.className = 'form-message';
+        formMessage.textContent = '';
+        
+        try {
+            const response = await fetch('php/contact.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                formMessage.className = 'form-message success';
+                formMessage.textContent = result.message || 'Mensagem enviada com sucesso!';
+                contactForm.reset();
+                
+                // Clear message after 5 seconds
+                setTimeout(() => {
+                    formMessage.className = 'form-message';
+                    formMessage.textContent = '';
+                }, 5000);
+            } else {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = result.message || 'Erro ao enviar mensagem. Tente novamente.';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            formMessage.className = 'form-message error';
+            formMessage.textContent = 'Erro ao enviar mensagem. Tente novamente.';
+        }
+    });
+}
+
 // Header scroll effect
 let lastScroll = 0;
 const header = document.querySelector('.header');
