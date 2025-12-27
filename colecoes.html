@@ -160,36 +160,16 @@
         </div>
     </footer>
 
-    <!-- Chat Widget -->
-    <div class="chat-widget" id="chatWidget">
-        <button class="chat-toggle" aria-label="Abrir chat">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </button>
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <h3>Museu [Nome]</h3>
-                <span class="chat-status">
-                    <span class="status-dot"></span>
-                    Responderemos assim que possível
-                </span>
-                <button class="chat-close" aria-label="Fechar chat">×</button>
-            </div>
-            <div class="chat-messages" id="chatMessages"></div>
-            <div class="chat-input-container">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Insira sua mensagem">
-                <button class="chat-send" aria-label="Enviar mensagem">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-button" aria-label="Fale conosco no WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.386 1.262.617 1.694.79.379.153.723.262 1.008.336.47.121.896.104 1.23.063.38-.044 1.171-.48 1.338-.943.164-.463.164-.86.114-.943-.049-.084-.182-.149-.38-.248z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.344 16.656c-.195.195-1.828 1.096-2.516 1.25-.344.077-.792.115-1.25-.038-.23-.077-1.23-.443-1.73-.923-.25-.25-.577-.577-.808-.923-.23-.346-.461-.288-.577-.173-.115.115-.461.577-.577.808-.115.23-.23.346-.461.461-.23.115-.461.192-.73.038-.27-.154-1.096-1.096-1.73-1.923-.346-.461-.577-1.038.038-1.73.308-.346.577-.73.808-1.096.23-.346.154-.577.038-.808-.115-.23-.115-.461.038-.73.154-.27.577-.808.923-1.23.346-.423.461-.577.692-.808.23-.23.346-.23.461-.115.115.115.577.346.808.577.23.23.346.346.461.577.115.23.23.346.038.577-.192.23-.461.577-.692.808-.23.23-.346.346-.23.577.115.23.577 1.096 1.23 1.73.653.634 1.23.808 1.5.923.27.115.461.077.692-.038.23-.115.808-.577 1.038-.808.23-.23.346-.23.577-.115.23.115 1.23.577 1.5.692.27.115.461.192.346.461-.115.27-.461.577-.692.808z"/>
+        </svg>
+    </a>
 
     <script type="module" src="./src/js/main.js"></script>
+    <script src="./src/js/load-content.js"></script>
 </body>
 </html>
 

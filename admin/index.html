@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <style>
+        body {
+            background: #f5f5f5;
+            font-family: var(--font-sans);
+        }
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            margin-bottom: 30px;
+            font-family: var(--font-serif);
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: var(--secondary-color);
+        }
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 30px;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--bg-gray);
+        }
+        .admin-header h1 {
+            font-family: var(--font-serif);
+            color: var(--primary-color);
+        }
+        .btn-logout {
+            padding: 10px 20px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .content-section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .content-section.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--bg-gray);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .image-preview {
+            max-width: 300px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+        .btn-primary {
+            padding: 12px 24px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+        .btn-danger {
+            padding: 8px 16px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-edit {
+            padding: 8px 16px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .items-list {
+            margin-top: 30px;
+        }
+        .item-card {
+            background: var(--bg-light);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        .item-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .item-actions {
+            margin-top: 15px;
+        }
+        .alert {
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="sidebar">
+            <h2>Painel Admin</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" data-section="inicio">Início</a></li>
+                <li><a href="#" data-section="sobre">Sobre</a></li>
+                <li><a href="#" data-section="exposicoes">Exposições</a></li>
+                <li><a href="#" data-section="colecoes">Coleções</a></li>
+                <li><a href="#" data-section="eventos">Eventos</a></li>
+                <li><a href="#" data-section="contato">Contato</a></li>
+                <li><a href="#" data-section="whatsapp">WhatsApp</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="admin-header">
+                <h1>Painel Administrativo</h1>
+                <button class="btn-logout" onclick="logout()">Sair</button>
+            </div>
+            
+            <div id="alertContainer"></div>
+            
+            <!-- Início -->
+            <div class="content-section" id="section-inicio">
+                <h2>Editar Página Inicial</h2>
+                <form id="formInicio">
+                    <div class="form-group">
+                        <label>Hero - Título</label>
+                        <input type="text" id="hero_title" name="hero_title">
+                    </div>
+                    <div class="form-group">
+                        <label>Hero - Subtítulo</label>
+                        <input type="text" id="hero_subtitle" name="hero_subtitle">
+                    </div>
+                    <div class="form-group">
+                        <label>Hero - Descrição</label>
+                        <textarea id="hero_description" name="hero_description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Hero - Imagem (URL)</label>
+                        <input type="text" id="hero_image" name="hero_image">
+                        <input type="file" id="hero_image_file" accept="image/*" onchange="uploadImage(this, 'hero_image')">
+                        <img id="hero_image_preview" class="image-preview" style="display:none;">
+                    </div>
+                    <div class="form-group">
+                        <label>Texto de Introdução</label>
+                        <textarea id="intro_text" name="intro_text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Sobre - Título</label>
+                        <input type="text" id="about_title" name="about_title">
+                    </div>
+                    <div class="form-group">
+                        <label>Sobre - Texto</label>
+                        <textarea id="about_text" name="about_text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Sobre - Imagem (URL)</label>
+                        <input type="text" id="about_image" name="about_image">
+                        <input type="file" id="about_image_file" accept="image/*" onchange="uploadImage(this, 'about_image')">
+                        <img id="about_image_preview" class="image-preview" style="display:none;">
+                    </div>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </form>
+            </div>
+            
+            <!-- Sobre -->
+            <div class="content-section" id="section-sobre">
+                <h2>Editar Página Sobre</h2>
+                <form id="formSobre">
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" id="sobre_title" name="sobre_title">
+                    </div>
+                    <div class="form-group">
+                        <label>Conteúdo</label>
+                        <textarea id="sobre_content" name="sobre_content"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Imagem (URL)</label>
+                        <input type="text" id="sobre_image" name="sobre_image">
+                        <input type="file" id="sobre_image_file" accept="image/*" onchange="uploadImage(this, 'sobre_image')">
+                        <img id="sobre_image_preview" class="image-preview" style="display:none;">
+                    </div>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </form>
+            </div>
+            
+            <!-- Exposições -->
+            <div class="content-section" id="section-exposicoes">
+                <h2>Gerenciar Exposições</h2>
+                <button class="btn-primary" onclick="showExposicaoForm()">Nova Exposição</button>
+                <div id="exposicaoForm" style="display:none; margin-top:20px; padding:20px; background:var(--bg-light); border-radius:8px;">
+                    <h3 id="exposicaoFormTitle">Nova Exposição</h3>
+                    <form id="formExposicao">
+                        <input type="hidden" id="exposicao_id">
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input type="text" id="exposicao_titulo" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Data</label>
+                            <input type="text" id="exposicao_data" placeholder="Ex: 15 de Janeiro - 30 de Março, 2024">
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea id="exposicao_descricao" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Badge</label>
+                            <select id="exposicao_badge">
+                                <option value="Em Exibição">Em Exibição</option>
+                                <option value="Permanente">Permanente</option>
+                                <option value="Em Breve">Em Breve</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Imagem (URL)</label>
+                            <input type="text" id="exposicao_imagem">
+                            <input type="file" id="exposicao_imagem_file" accept="image/*" onchange="uploadImage(this, 'exposicao_imagem')">
+                            <img id="exposicao_imagem_preview" class="image-preview" style="display:none;">
+                        </div>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                        <button type="button" class="btn-danger" onclick="cancelExposicaoForm()">Cancelar</button>
+                    </form>
+                </div>
+                <div id="exposicoesList" class="items-list"></div>
+            </div>
+            
+            <!-- Coleções -->
+            <div class="content-section" id="section-colecoes">
+                <h2>Gerenciar Coleções</h2>
+                <button class="btn-primary" onclick="showColecaoForm()">Nova Coleção</button>
+                <div id="colecaoForm" style="display:none; margin-top:20px; padding:20px; background:var(--bg-light); border-radius:8px;">
+                    <h3 id="colecaoFormTitle">Nova Coleção</h3>
+                    <form id="formColecao">
+                        <input type="hidden" id="colecao_id">
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input type="text" id="colecao_titulo" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea id="colecao_descricao" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Destaques (um por linha)</label>
+                            <textarea id="colecao_destaques" placeholder="Mais de 5.000 artefatos catalogados"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Imagem (URL)</label>
+                            <input type="text" id="colecao_imagem">
+                            <input type="file" id="colecao_imagem_file" accept="image/*" onchange="uploadImage(this, 'colecao_imagem')">
+                            <img id="colecao_imagem_preview" class="image-preview" style="display:none;">
+                        </div>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                        <button type="button" class="btn-danger" onclick="cancelColecaoForm()">Cancelar</button>
+                    </form>
+                </div>
+                <div id="colecoesList" class="items-list"></div>
+            </div>
+            
+            <!-- Eventos -->
+            <div class="content-section" id="section-eventos">
+                <h2>Gerenciar Eventos</h2>
+                <button class="btn-primary" onclick="showEventoForm()">Novo Evento</button>
+                <div id="eventoForm" style="display:none; margin-top:20px; padding:20px; background:var(--bg-light); border-radius:8px;">
+                    <h3 id="eventoFormTitle">Novo Evento</h3>
+                    <form id="formEvento">
+                        <input type="hidden" id="evento_id">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label>Dia</label>
+                                <input type="number" id="evento_dia" min="1" max="31" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Mês</label>
+                                <select id="evento_mes" required>
+                                    <option value="JAN">Janeiro</option>
+                                    <option value="FEV">Fevereiro</option>
+                                    <option value="MAR">Março</option>
+                                    <option value="ABR">Abril</option>
+                                    <option value="MAI">Maio</option>
+                                    <option value="JUN">Junho</option>
+                                    <option value="JUL">Julho</option>
+                                    <option value="AGO">Agosto</option>
+                                    <option value="SET">Setembro</option>
+                                    <option value="OUT">Outubro</option>
+                                    <option value="NOV">Novembro</option>
+                                    <option value="DEZ">Dezembro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input type="text" id="evento_titulo" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Horário</label>
+                            <input type="text" id="evento_horario" placeholder="Ex: 19:00 - 21:00">
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea id="evento_descricao" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Local</label>
+                            <input type="text" id="evento_local">
+                        </div>
+                        <div class="form-group">
+                            <label>Preço</label>
+                            <input type="text" id="evento_preco" placeholder="Ex: Gratuito ou R$ 50,00">
+                        </div>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                        <button type="button" class="btn-danger" onclick="cancelEventoForm()">Cancelar</button>
+                    </form>
+                </div>
+                <div id="eventosList" class="items-list"></div>
+            </div>
+            
+            <!-- Contato -->
+            <div class="content-section" id="section-contato">
+                <h2>Editar Informações de Contato</h2>
+                <form id="formContato">
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <textarea id="contato_endereco" placeholder="Use \n para quebras de linha"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <textarea id="contato_telefone" placeholder="Use \n para múltiplos telefones"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <textarea id="contato_email" placeholder="Use \n para múltiplos emails"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Horário de Funcionamento</label>
+                        <textarea id="contato_horario" placeholder="Use \n para quebras de linha"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </form>
+            </div>
+            
+            <!-- WhatsApp -->
+            <div class="content-section" id="section-whatsapp">
+                <h2>Configurar WhatsApp</h2>
+                <form id="formWhatsApp">
+                    <div class="form-group">
+                        <label>Número do WhatsApp (apenas números, com código do país)</label>
+                        <input type="text" id="whatsapp_number" placeholder="5511999999999" required>
+                        <small>Exemplo: 5511999999999 (55 = Brasil, 11 = DDD, 999999999 = número)</small>
+                    </div>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./admin.js"></script>
+</body>
+</html>
+
