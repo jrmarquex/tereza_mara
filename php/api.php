@@ -1,10 +1,18 @@
 <?php
+// Habilitar exibição de erros para debug (remover em produção)
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
 require_once 'config.php';
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-header('Access-Control-Allow-Headers: Content-Type');
+// Verificar se headers já foram enviados
+if (!headers_sent()) {
+    header('Content-Type: application/json');
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+    header('Access-Control-Allow-Headers: Content-Type');
+}
 
 // Verificar autenticação para operações de escrita
 $requiresAuth = ['POST', 'PUT', 'DELETE'];

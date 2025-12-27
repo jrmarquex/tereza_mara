@@ -1,7 +1,14 @@
 <?php
+// Habilitar exibição de erros para debug (remover em produção)
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
 require_once 'config.php';
 
-header('Content-Type: application/json');
+if (!headers_sent()) {
+    header('Content-Type: application/json');
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';

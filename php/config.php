@@ -16,7 +16,9 @@ if (!is_dir(UPLOADS_DIR)) {
 
 // Iniciar sessão
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    if (!headers_sent()) {
+        session_start();
+    }
 }
 
 // Função para verificar se está logado
