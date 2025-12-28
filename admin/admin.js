@@ -23,9 +23,19 @@ document.querySelectorAll('.sidebar-menu a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const section = link.dataset.section;
-        showSection(section);
-        document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
-        link.classList.add('active');
+        if (section) {
+            // Atualizar hash na URL
+            window.location.hash = `section-${section}`;
+            showSection(section);
+            document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+        } else {
+            // Se não tem data-section, pode ser link externo (dashboard)
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('#')) {
+                window.location.href = href;
+            }
+        }
     });
 });
 
@@ -579,7 +589,39 @@ function logout() {
     });
 }
 
-// Mostrar primeira seção por padrão
-showSection('inicio');
-document.querySelector('.sidebar-menu a[data-section="inicio"]').classList.add('active');
+// Verificar hash na URL e mostrar seção correspondente
+function checkHashAndShowSection() {
+    const hash = window.location.hash;
+    if (hash) {
+        // Remover #section- do hash
+        const section = hash.replace('#section-', '');
+        if (section) {
+            showSection(section);
+            // Atualizar menu ativo
+            document.querySelectorAll('.sidebar-menu a').forEach(a => {
+                a.classList.remove('active');
+                if (a.dataset.section === section || a.getAttribute('href') === hash) {
+                    a.classList.add('active');
+                }
+            });
+            return true;
+        }
+    }
+    return false;
+}
+
+// Verificar hash ao carregar página
+if (!checkHashAndShowSection()) {
+    // Se não houver hash, mostrar primeira seção
+    showSection('inicio');
+    const inicioLink = document.querySelector('.sidebar-menu a[data-section="inicio"]');
+    if (inicioLink) {
+        inicioLink.classList.add('active');
+    }
+}
+
+// Escutar mudanças no hash
+window.addEventListener('hashchange', () => {
+    checkHashAndShowSection();
+});
 
