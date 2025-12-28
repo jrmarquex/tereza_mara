@@ -11,17 +11,11 @@ RewriteEngine On
 # ErrorDocument 404 /404.html
 
 # Proteger arquivos sensíveis
-<FilesMatch "\.(txt|log|ini)$">
-    Order allow,deny
-    Deny from all
+<FilesMatch "\.(txt|log|ini|json)$">
+    Require all denied
 </FilesMatch>
 
-# Proteger pasta data
-<IfModule mod_authz_core.c>
-    <DirectoryMatch "^.*/data/.*">
-        Require all denied
-    </DirectoryMatch>
-</IfModule>
+# Proteger pasta data (proteção feita via .htaccess dentro da pasta data/)
 
 # Compressão GZIP
 <IfModule mod_deflate.c>
