@@ -408,10 +408,10 @@
             </div>
             
             <div class="filter-buttons">
-                <button class="filter-btn active" onclick="loadStats(7)">7 dias</button>
-                <button class="filter-btn" onclick="loadStats(30)">30 dias</button>
-                <button class="filter-btn" onclick="loadStats(90)">90 dias</button>
-                <button class="filter-btn" onclick="loadStats(365)">1 ano</button>
+                <button class="filter-btn active" onclick="loadStats(7, this)">7 dias</button>
+                <button class="filter-btn" onclick="loadStats(30, this)">30 dias</button>
+                <button class="filter-btn" onclick="loadStats(90, this)">90 dias</button>
+                <button class="filter-btn" onclick="loadStats(365, this)">1 ano</button>
             </div>
             
             <!-- Stats Cards -->
@@ -557,14 +557,23 @@
         checkAuth();
         
         // Carregar estatísticas
-        async function loadStats(days = 30) {
+        async function loadStats(days = 30, clickedBtn = null) {
             currentDays = days;
             
             // Atualizar botões ativos
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event?.target?.classList.add('active');
+            if (clickedBtn) {
+                clickedBtn.classList.add('active');
+            } else {
+                // Se não foi clicado, ativar o botão correspondente
+                const buttons = document.querySelectorAll('.filter-btn');
+                const daysMap = {7: 0, 30: 1, 90: 2, 365: 3};
+                if (daysMap[days] !== undefined) {
+                    buttons[daysMap[days]]?.classList.add('active');
+                }
+            }
             
             try {
                 const response = await fetch(`../php/tracker.php?action=stats&days=${days}`);
@@ -746,7 +755,7 @@
         loadStats(30);
         
         // Atualizar a cada 30 segundos
-        setInterval(() => loadStats(currentDays), 30000);
+        setInterval(() => loadStats(currentDays, null), 30000);
     </script>
 </body>
 </html>
